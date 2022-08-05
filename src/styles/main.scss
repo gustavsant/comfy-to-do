@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+@mixin glassmorph {
+    backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(17, 25, 40, 0.75);
+}
+body{
+    background-color: #777;
+    border: 1px solid black;
+    height: 100vh;
+    main{
+        margin: 0 auto;
+        width: 350px;
+        h1{
+            @include glassmorph();
+            width: 35%;
+        }
+    }
+}
+.main-content{
+    @include glassmorph();
+    padding: 10px;
+    .notes-grid{
+        ul li{
+            height: 30px;
+            width: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.125);
+        }
+    }
+}
