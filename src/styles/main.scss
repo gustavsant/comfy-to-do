@@ -3,18 +3,29 @@
     padding: 0;
     list-style: none;
 }
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;900&display=swap');
+
+
+$primary-color: #151727;
 @mixin glassmorph {
     backdrop-filter: blur(16px) saturate(180%);
     background-color: rgba(17, 25, 40, 0.75);
 }
+@mixin flexcenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 body{
-    background-color: #777;
-    border: 1px solid black;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    background-size: cover;
     height: 100vh;
+    @include flexcenter();
     main{
-        margin: 0 auto;
-        width: 350px;
+        height: 550px;
         h1{
+            text-align: center;
             @include glassmorph();
             width: 35%;
         }
@@ -25,9 +36,29 @@ body{
     padding: 10px;
     .notes-grid{
         ul li{
+            display: flex;
+            justify-content: space-between;
+            border: 2px solid $primary-color;
+            padding-bottom: 20px;
             height: 30px;
-            width: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.125);
+            button{
+                cursor: pointer;
+                font-size: 28px;
+                text-align: center;
+                height: 30px;
+                width: 30px;
+                background-color: white;
+            }    
         }
+    }
+    #new-note-btn, #clear-btn{
+        cursor: pointer;
+        background-color: $primary-color;
+        color: white;
+        height: 50px;
+        width: 50px;
+    }
+    .top-box{
+        @include flexcenter();
     }
 }

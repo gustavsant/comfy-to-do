@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;900&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -5,15 +6,19 @@
 }
 
 body {
-  background-color: #777;
-  border: 1px solid black;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+  background-size: cover;
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 body main {
-  margin: 0 auto;
-  width: 350px;
+  height: 550px;
 }
 body main h1 {
+  text-align: center;
   -webkit-backdrop-filter: blur(16px) saturate(180%);
           backdrop-filter: blur(16px) saturate(180%);
   background-color: rgba(17, 25, 40, 0.75);
@@ -27,7 +32,29 @@ body main h1 {
   padding: 10px;
 }
 .main-content .notes-grid ul li {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid #151727;
+  padding-bottom: 20px;
   height: 30px;
-  width: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.125);
+}
+.main-content .notes-grid ul li button {
+  cursor: pointer;
+  font-size: 28px;
+  text-align: center;
+  height: 30px;
+  width: 30px;
+  background-color: white;
+}
+.main-content #new-note-btn, .main-content #clear-btn {
+  cursor: pointer;
+  background-color: #151727;
+  color: white;
+  height: 50px;
+  width: 50px;
+}
+.main-content .top-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=main.css.map */
