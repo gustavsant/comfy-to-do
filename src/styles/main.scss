@@ -32,18 +32,28 @@ body{
     }
 }
 .main-content{
+    max-height: 500px; 
+    overflow-y: auto;
     @include glassmorph();
     padding: 10px;
+    .txt-area-btns{
+        i{
+            font-size: 20px;
+        }
+    }
     .notes-grid{
+        ul{
+            overflow: hidden;
+        }
         ul li{
             display: flex;
             justify-content: space-between;
             border: 2px solid $primary-color;
-            padding-bottom: 20px;
-            height: 30px;
+            height: 50px;
+            align-items: center;
             button{
                 cursor: pointer;
-                font-size: 28px;
+                font-size: 100%;
                 text-align: center;
                 height: 30px;
                 width: 30px;

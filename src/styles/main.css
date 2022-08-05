@@ -26,21 +26,29 @@ body main h1 {
 }
 
 .main-content {
+  max-height: 500px;
+  overflow-y: auto;
   -webkit-backdrop-filter: blur(16px) saturate(180%);
           backdrop-filter: blur(16px) saturate(180%);
   background-color: rgba(17, 25, 40, 0.75);
   padding: 10px;
 }
+.main-content .txt-area-btns i {
+  font-size: 20px;
+}
+.main-content .notes-grid ul {
+  overflow: hidden;
+}
 .main-content .notes-grid ul li {
   display: flex;
   justify-content: space-between;
   border: 2px solid #151727;
-  padding-bottom: 20px;
-  height: 30px;
+  height: 50px;
+  align-items: center;
 }
 .main-content .notes-grid ul li button {
   cursor: pointer;
-  font-size: 28px;
+  font-size: 100%;
   text-align: center;
   height: 30px;
   width: 30px;
