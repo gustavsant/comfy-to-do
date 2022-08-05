@@ -7,9 +7,8 @@ clearBtn.onclick = function(){
 }
 
 let notes = JSON.parse(localStorage.getItem('newNote'))  || []
-
+    
 newNoteBtn.addEventListener('click', () => {
-    const textArea = document.getElementById('miguel')
     notes.push(textArea.value)
     localStorage.setItem('newNote', JSON.stringify(notes))
 })
