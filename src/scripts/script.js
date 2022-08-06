@@ -22,14 +22,23 @@ let notes = JSON.parse(localStorage.getItem('newNote'))  || []
 let checkeds = JSON.parse(localStorage.getItem('checkeds')) || []
 
 
+textArea.addEventListener('keypress', (evt)=>{
+    if(evt.keyCode != 13){
+       return
+    }
+    evt.preventDefault()
+    AddNote()
+    textArea.value = ''
 
-newNoteBtn.addEventListener('click', () => {
+})
+newNoteBtn.addEventListener('click', AddNote)
+
+function AddNote(){
     notes.push(textArea.value)
     
     localStorage.setItem('newNote', JSON.stringify(notes))
     BuildNotes(textArea.value)
-})
-
+}
 function LoadCards(){
     for(let c=0 ; c!=notes.length ; c++){
         BuildNotes(notes[c], c)
