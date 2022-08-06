@@ -1,15 +1,16 @@
+
 const textArea = document.getElementById('text-area')
 const newNoteBtn = document.querySelector('#new-note-btn')
 const clearBtn = document.querySelector('#clear-btn')
 const grid = document.querySelector('.notes-grid ul')
 const checkBoxBtn = document.querySelector('.check')
 
-
 clearBtn.onclick = function(){
     localStorage.clear()
     const cards = document.querySelectorAll('.card')
     cards.forEach((each)=>{
         each.remove()
+        notes.pop()
     })
     
     
@@ -42,6 +43,7 @@ function BuildNotes(value, id = notes.length+1){
     let del = document.createElement('button')
     btnDiv.appendChild(check)
     btnDiv.appendChild(del)
+    del.addEventListener('click', DelTag)
     
 
     check.classList.add('check')
@@ -54,5 +56,31 @@ function BuildNotes(value, id = notes.length+1){
     grid.appendChild(card)
 }
 LoadCards()
-   
+function DelTag(){
+    let delBtn = document.querySelectorAll('.del')
+    for(let c = 0 ; c < delBtn.length ; c++){
+        delBtn[c].onclick = function(){
+            let li = this.parentNode.parentNode
+            li.classList.add('deleted')
+            li.addEventListener('animationend', (animation) => {
+                if(animation.animationName == 'deleted'){
+                    let parent = this.parentElement.parentElement
+                    parent.style.display = 'none'
+                    let localNotes = JSON.parse(localStorage.newNote)
+                    let valueToDel = parent.innerText
+        
+                    let index = notes.indexOf(valueToDel)
+                    let indexLocal = localNotes.indexOf(valueToDel)
+                    console.log(indexLocal);
+                    console.log(index);
+        
+                    localNotes.splice(indexLocal, 1)
+                    notes.splice(index, 1)
+                    localStorage.setItem('newNote', JSON.stringify(notes))
+                    console.log(localNotes)
+                }
+            })
+        }
+    }
+}
 
