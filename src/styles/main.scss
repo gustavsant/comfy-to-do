@@ -7,10 +7,9 @@
 
 
 $primary-color: #151727;
-@mixin glassmorph {
-    backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgba(17, 25, 40, 0.75);
-}
+$secondary-color: #D1F6FF;
+$thing: '<i class="bi bi-check2"></i>';
+
 @mixin flexcenter {
     display: flex;
     justify-content: center;
@@ -25,23 +24,29 @@ body{
     main{
         height: 550px;
         h1{
-            text-align: center;
-            @include glassmorph();
-            width: 35%;
+            color: $primary-color;
+            background-image: url('../img/round/morning-header.png');
+            background-size: cover;
+            background-position: bottom;
+            height: 220px;
             padding: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
 }
 .main-content{
-    max-height: 500px; 
+    max-height: 325px; 
     overflow-y: auto;
-    @include glassmorph();
+    background-color: white;
     padding: 10px;
+    
     #text-area{
         font-size: 18px;
         padding: 3px;
         outline: none;
-        border: none;
+        border: 1px solid $primary-color;
         display: block;
         width: 100%;
         overflow: hidden;
@@ -62,27 +67,34 @@ body{
     }
     .notes-grid{
         ul{
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            overflow: auto;
             .deleted{
                 animation: deleted 0.5s ease forwards;
             }
             .checked{
-                background-color: #adadad;
-                color: black
+                background-color: $secondary-color;
+            }
+            .teste{
+                display: flex;
             }
         }
         ul li{
+            color: $primary-color;
             animation: start 0.5s ease forwards;
             padding-left: 10px;
             display: flex;
             justify-content: space-between;
-            border: 1px solid $primary-color;
-            border-top-color: transparent;
+            border-bottom: 3px solid $secondary-color;
             height: 50px;
             align-items: center;
             transform: translateX(-80px);
             transition: all 0.5s;
+            cursor: pointer;
             .btns-div{
+                position: absolute;
+                right: 0;
                 padding: 10px;
             }
             
@@ -91,21 +103,29 @@ body{
                 font-size: 100%;
                 text-align: center;
                 height: 30px;
-                width: 30px;
                 background-color: white;
+                width: 30px;
+                border: 1px solid $primary-color;
+                transition: all 1s;
+                :hover{
+                    color: red;
+                }
             }    
         }
     }
-    #new-note-btn, #clear-btn{
+    #new-note-btn{
         cursor: pointer;
-        background-color: $primary-color;
-        color: white;
+        background-color: white;
+        color: $primary-color;
         height: 50px;
+        border: 1px solid $primary-color;
         width: 50px;
+        :hover{
+            color: rgb(69, 176, 3);
+        }
     }
     .top-box{
         @include flexcenter();
-        border-bottom: 1px solid $primary-color;
     }
 }
 @keyframes start {
@@ -123,3 +143,12 @@ body{
         transform: translateX(-100px);
     }
 }
+::-webkit-scrollbar{
+    width: 10px;
+}
+::-webkit-scrollbar-track{
+    background-color: white;
+}
+::-webkit-scrollbar-thumb {
+    background: #9999;
+  }

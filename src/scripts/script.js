@@ -16,8 +16,13 @@ clearBtn.onclick = function(){
     
 }
 
+
+
 let notes = JSON.parse(localStorage.getItem('newNote'))  || []
-    
+let checkeds = JSON.parse(localStorage.getItem('checkeds')) || []
+
+
+
 newNoteBtn.addEventListener('click', () => {
     notes.push(textArea.value)
     
@@ -29,31 +34,45 @@ function LoadCards(){
     for(let c=0 ; c!=notes.length ; c++){
         BuildNotes(notes[c], c)
     }
-    
+    setTimeout(Matches, 500)
+}
+
+function Matches(){
+    const notesToCheck = checkeds.filter(element => notes.includes(element))  
+    const cards = document.querySelectorAll('.card')
+    notesToCheck.forEach((each)=>{
+        for(let i = 0 ; i!=notes.length ; i++){
+            if(notes[i] == each){
+                cards.forEach((e)=>{
+                    if(e.innerText == each){
+                        e.classList.add('checked')
+                    }
+                })
+            }
+        }
+    })
 }
 function BuildNotes(value, id = notes.length+1){
     let card = document.createElement('li')
     card.innerText = value
     card.classList.add('card')
     card.classList.add(id)
+    card.addEventListener('click', Check)
 
     let btnDiv = document.createElement('div')
     btnDiv.classList.add('btns-div')
-    let check = document.createElement('button')
+
     let del = document.createElement('button')
-    btnDiv.appendChild(check)
+
     btnDiv.appendChild(del)
     del.addEventListener('click', DelTag)
-    
-
-    check.classList.add('check')
-    check.innerHTML = '<i class="bi bi-check-lg"></i>'
 
     del.classList.add('del')
-    del.innerHTML = '<i class="bi bi-trash3"></i>'
+    del.innerHTML = '<i class="bi bi-x-lg"></i>'
 
     card.appendChild(btnDiv)
     grid.appendChild(card)
+
 }
 LoadCards()
 function DelTag(){
@@ -71,16 +90,33 @@ function DelTag(){
         
                     let index = notes.indexOf(valueToDel)
                     let indexLocal = localNotes.indexOf(valueToDel)
-                    console.log(indexLocal);
-                    console.log(index);
+
+
+                   
         
+
                     localNotes.splice(indexLocal, 1)
                     notes.splice(index, 1)
                     localStorage.setItem('newNote', JSON.stringify(notes))
-                    console.log(localNotes)
+             
                 }
             })
         }
     }
 }
+function Check(){
+    if(this.classList.contains('checked')){
+        this.classList.remove('checked')
+        let indexChecked = checkeds.indexOf(this.innerText)
+        checkeds.splice(indexChecked, 1)
+        localStorage.setItem('checkeds', JSON.stringify(checkeds))
+    }else{
+        checkeds.push(this.innerText)
+        this.classList.add('checked')
+        localStorage.setItem('checkeds', JSON.stringify(checkeds))
+    }
+    
+}
+
+
 

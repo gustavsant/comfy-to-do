@@ -18,27 +18,28 @@ body main {
   height: 550px;
 }
 body main h1 {
-  text-align: center;
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-          backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(17, 25, 40, 0.75);
-  width: 35%;
+  color: #151727;
+  background-image: url("../img/round/morning-header.png");
+  background-size: cover;
+  background-position: bottom;
+  height: 220px;
   padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .main-content {
-  max-height: 500px;
+  max-height: 325px;
   overflow-y: auto;
-  -webkit-backdrop-filter: blur(16px) saturate(180%);
-          backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(17, 25, 40, 0.75);
+  background-color: white;
   padding: 10px;
 }
 .main-content #text-area {
   font-size: 18px;
   padding: 3px;
   outline: none;
-  border: none;
+  border: 1px solid #151727;
   display: block;
   width: 100%;
   overflow: hidden;
@@ -54,30 +55,37 @@ body main h1 {
   font-size: 20px;
 }
 .main-content .notes-grid ul {
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
 }
 .main-content .notes-grid ul .deleted {
   -webkit-animation: deleted 0.5s ease forwards;
           animation: deleted 0.5s ease forwards;
 }
 .main-content .notes-grid ul .checked {
-  background-color: #adadad;
-  color: black;
+  background-color: #D1F6FF;
+}
+.main-content .notes-grid ul .teste {
+  display: flex;
 }
 .main-content .notes-grid ul li {
+  color: #151727;
   -webkit-animation: start 0.5s ease forwards;
           animation: start 0.5s ease forwards;
   padding-left: 10px;
   display: flex;
   justify-content: space-between;
-  border: 1px solid #151727;
-  border-top-color: transparent;
+  border-bottom: 3px solid #D1F6FF;
   height: 50px;
   align-items: center;
   transform: translateX(-80px);
   transition: all 0.5s;
+  cursor: pointer;
 }
 .main-content .notes-grid ul li .btns-div {
+  position: absolute;
+  right: 0;
   padding: 10px;
 }
 .main-content .notes-grid ul li button {
@@ -85,21 +93,29 @@ body main h1 {
   font-size: 100%;
   text-align: center;
   height: 30px;
-  width: 30px;
   background-color: white;
+  width: 30px;
+  border: 1px solid #151727;
+  transition: all 1s;
 }
-.main-content #new-note-btn, .main-content #clear-btn {
+.main-content .notes-grid ul li button :hover {
+  color: red;
+}
+.main-content #new-note-btn {
   cursor: pointer;
-  background-color: #151727;
-  color: white;
+  background-color: white;
+  color: #151727;
   height: 50px;
+  border: 1px solid #151727;
   width: 50px;
+}
+.main-content #new-note-btn :hover {
+  color: rgb(69, 176, 3);
 }
 .main-content .top-box {
   display: flex;
   justify-content: center;
   align-items: center;
-  border-bottom: 1px solid #151727;
 }
 
 @-webkit-keyframes start {
@@ -132,4 +148,15 @@ body main h1 {
     color: red;
     transform: translateX(-100px);
   }
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(153, 153, 153, 0.6);
 }/*# sourceMappingURL=main.css.map */
