@@ -57,6 +57,7 @@ function AddNote(){
         notes.push(textArea.value)
         localStorage.setItem('newNote', JSON.stringify(notes))
         BuildNotes(textArea.value)
+        textArea.value = ''
     }
     
 }
