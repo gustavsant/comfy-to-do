@@ -14,6 +14,10 @@ body {
   justify-content: center;
   align-items: center;
 }
+body .nono {
+  -webkit-animation: nono 0.5s ease;
+          animation: nono 0.5s ease;
+}
 body main {
   height: 550px;
 }
@@ -39,7 +43,6 @@ body main h1 {
   font-size: 18px;
   padding: 3px;
   outline: none;
-  border: 1px solid #151727;
   display: block;
   width: 100%;
   overflow: hidden;
@@ -117,6 +120,11 @@ body main h1 {
   justify-content: center;
   align-items: center;
 }
+.main-content .top-box .no {
+  border: 1px solid #151727;
+  -webkit-animation: no 0.5s ease;
+          animation: no 0.5s ease;
+}
 
 @-webkit-keyframes start {
   to {
@@ -147,6 +155,74 @@ body main h1 {
     opacity: 0;
     color: red;
     transform: translateX(-100px);
+  }
+}
+@-webkit-keyframes nono {
+  10% {
+    transform: translateX(-10px);
+  }
+  20% {
+    transform: translateX(10px);
+  }
+  40% {
+    transform: translateX(-10px);
+  }
+  60% {
+    transform: translateX(10px);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+@keyframes nono {
+  10% {
+    transform: translateX(-10px);
+  }
+  20% {
+    transform: translateX(10px);
+  }
+  40% {
+    transform: translateX(-10px);
+  }
+  60% {
+    transform: translateX(10px);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+@-webkit-keyframes no {
+  10% {
+    border: 2px solid red;
+  }
+  50% {
+    border: 2px solid red;
+  }
+  90% {
+    border: 1px solid red;
+  }
+  100% {
+    border: 1px solid #151727;
+  }
+}
+@keyframes no {
+  10% {
+    border: 2px solid red;
+  }
+  50% {
+    border: 2px solid red;
+  }
+  90% {
+    border: 1px solid red;
+  }
+  100% {
+    border: 1px solid #151727;
   }
 }
 ::-webkit-scrollbar {

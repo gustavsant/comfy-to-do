@@ -1,4 +1,4 @@
-
+const mainArea = document.querySelector('main')
 const textArea = document.getElementById('text-area')
 const newNoteBtn = document.querySelector('#new-note-btn')
 const clearBtn = document.querySelector('#clear-btn')
@@ -11,10 +11,20 @@ clearBtn.onclick = function(){
     cards.forEach((each)=>{
         each.remove()
         notes.pop()
-    })
-    
-    
+    })    
 }
+
+mainArea.addEventListener('animationend', (anim)=>{
+    if(anim.animationName == 'nono'){
+        mainArea.classList.remove('nono')
+    }
+})
+textArea.addEventListener('animationend', (anim)=>{
+    if(anim.animationName == 'no'){
+        textArea.classList.remove('no')
+    }
+})
+
 
 
 
@@ -27,21 +37,32 @@ textArea.addEventListener('keypress', (evt)=>{
        return
     }
     evt.preventDefault()
-    AddNote()
+    if(textArea.value == '' || notes.includes(textArea.value)){
+        textArea.classList.add('no')
+        mainArea.classList.add('nono')
+    }else{
+        AddNote()
+    }
+    
     textArea.value = ''
 
 })
 newNoteBtn.addEventListener('click', AddNote)
 
 function AddNote(){
-    notes.push(textArea.value)
+    if(textArea.value == '' || notes.includes(textArea.value)){
+        textArea.classList.add('no')
+        mainArea.classList.add('nono')
+    }else{
+        notes.push(textArea.value)
+        localStorage.setItem('newNote', JSON.stringify(notes))
+        BuildNotes(textArea.value)
+    }
     
-    localStorage.setItem('newNote', JSON.stringify(notes))
-    BuildNotes(textArea.value)
 }
 function LoadCards(){
     for(let c=0 ; c!=notes.length ; c++){
-        BuildNotes(notes[c], c)
+        BuildNotes(notes[c])
     }
     setTimeout(Matches, 500)
 }
@@ -61,11 +82,12 @@ function Matches(){
         }
     })
 }
-function BuildNotes(value, id = notes.length+1){
+function BuildNotes(value){
     let card = document.createElement('li')
     card.innerText = value
     card.classList.add('card')
-    card.classList.add(id)
+
+
     card.addEventListener('click', Check)
 
     let btnDiv = document.createElement('div')

@@ -21,7 +21,11 @@ body{
     background-size: cover;
     height: 100vh;
     @include flexcenter();
+    .nono{
+        animation: nono 0.5s ease;
+    }
     main{
+        
         height: 550px;
         h1{
             color: $primary-color;
@@ -42,11 +46,11 @@ body{
     background-color: white;
     padding: 10px;
     
+    
     #text-area{
         font-size: 18px;
         padding: 3px;
         outline: none;
-        border: 1px solid $primary-color;
         display: block;
         width: 100%;
         overflow: hidden;
@@ -125,6 +129,10 @@ body{
         }
     }
     .top-box{
+        .no{
+            border: 1px solid $primary-color;
+            animation: no 0.5s ease;
+        }
         @include flexcenter();
     }
 }
@@ -141,6 +149,40 @@ body{
         opacity: 0;
         color: red;
         transform: translateX(-100px);
+    }
+}
+@keyframes nono {
+    10%{
+        transform: translateX(-10px);
+    }
+    20%{
+        transform: translateX(10px);
+    }
+    40%{
+        transform: translateX(-10px);
+    }
+    60%{
+        transform: translateX(10px);
+    }
+    80%{
+        transform: translateX(-10px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+@keyframes no {
+    10%{
+        border: 2px solid red;
+    }
+    50%{
+        border: 2px solid red;
+    }
+    90%{
+        border: 1px solid red;
+    }
+    100%{
+        border: 1px solid $primary-color;
     }
 }
 ::-webkit-scrollbar{
