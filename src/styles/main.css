@@ -21,23 +21,91 @@ body .nono {
 body main {
   height: 550px;
 }
-body main h1 {
-  color: #151727;
+body main .titleHeader {
   background-image: url("../img/round/morning-header.png");
   background-size: cover;
   background-position: bottom;
   height: 220px;
-  padding: 5px;
+  padding: 10px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
+  transition: 0.5s;
+}
+body main .titleHeader .toggle {
+  width: 100%;
+}
+body main .titleHeader .toggle input {
+  height: 20px;
+  width: 40px;
+  border-radius: 12px;
+  background-color: #D1F6FF;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  box-shadow: inset 0px 0px 16px 1px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: 0.3s;
+  position: relative;
+}
+body main .titleHeader .toggle input:checked {
+  background-color: #2D5068;
+  box-shadow: inset 0px 2px 8px 1px rgba(255, 255, 255, 0.15);
+}
+body main .titleHeader .toggle input:before {
+  content: "";
+  background-color: white;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.25);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.3s;
+}
+body main .titleHeader .toggle input:checked:before {
+  left: 21px;
+}
+body main h1 {
+  margin-top: 80px;
+  color: #151727;
+}
+body main .clear {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+}
+body main .clear .confirms .confirm-yes {
+  color: greenyellow;
+  cursor: pointer;
+  margin-right: 10px;
+}
+body main .clear .confirms .confirm-no {
+  margin-left: 10px;
+  color: red;
+  cursor: pointer;
+}
+body main .clear .hide {
+  display: none;
+}
+body main .clear #clear-btn {
+  cursor: pointer;
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.358);
+  height: 30px;
+  width: 30px;
 }
 
 .main-content {
-  max-height: 325px;
+  max-height: 295px;
   overflow-y: auto;
   background-color: white;
   padding: 10px;
+  transition: 0.5s;
 }
 .main-content #text-area {
   font-size: 18px;
@@ -67,7 +135,14 @@ body main h1 {
           animation: deleted 0.5s ease forwards;
 }
 .main-content .notes-grid ul .checked {
-  background-color: #D1F6FF;
+  color: green;
+}
+.main-content .notes-grid ul .checked:before {
+  position: absolute;
+  font-weight: 800;
+  content: "OK!";
+  right: 0;
+  padding-right: 60px;
 }
 .main-content .notes-grid ul .teste {
   display: flex;
@@ -116,6 +191,7 @@ body main h1 {
   color: rgb(69, 176, 3);
 }
 .main-content .top-box {
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;

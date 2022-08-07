@@ -16,13 +16,18 @@
 
 <body style="background-image: url('https://cutewallpaper.org/28/comfy-pixel-wallpaper-gif/1347720640.jpg')">
     <main>
-        <h1>To-Do</h1>
+        <div class="titleHeader">
+            <h1>To-Do</h1>
+            <div class="toggle">
+                <input type="checkbox"id="theme-button">
+            </div>
+        </div>
         <div class="main-content">
             <div class="top-box">
                 <textarea id="text-area" cols="30" rows="2"></textarea>
                 <div class="txt-area-btns">
                     <button id="new-note-btn"><i class="bi bi-plus-lg"></i></button>
-                    
+
                 </div>
             </div>
             <div class="bottom-box">
@@ -32,7 +37,15 @@
                 </div>
             </div>
         </div>
-        <button id="clear-btn"><i class="bi bi-trash3"></i></button>
+        <div class="clear">
+            <button id="clear-btn">
+                <i class="bi bi-trash3"></i>
+            </button>
+            <div class="confirms hide">
+                <span class="confirm-yes"><i class="bi bi-check-lg"></i></span>
+                <span class="confirm-no"><i class="bi bi-x-lg"></i></span>
+            </div>
+        </div>
     </main>
 </body>
 

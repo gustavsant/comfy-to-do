@@ -4,14 +4,59 @@ const newNoteBtn = document.querySelector('#new-note-btn')
 const clearBtn = document.querySelector('#clear-btn')
 const grid = document.querySelector('.notes-grid ul')
 const checkBoxBtn = document.querySelector('.check')
+const confirms = document.querySelector('.confirms')
+const confirmYes = document.querySelector('.confirm-yes')
+const confirmNo = document.querySelector('.confirm-no')
+const themeButton = document.querySelector('#theme-button')
+const cards = document.querySelectorAll('.card')
 
-clearBtn.onclick = function(){
+let currTheme
+
+themeButton.addEventListener('click', Theme)
+
+Theme()
+
+function Theme(){
+    const header = document.querySelector('.titleHeader')
+    const headerh1 = document.querySelector('.titleHeader h1')
+    if(themeButton.checked == true){
+        header.style.backgroundImage = "url('src/img/round/night-header.png')" //src\img\round\night-header.png
+        headerh1.style.color = 'white'
+        console.log('oii')
+        document.querySelector('.main-content').style.backgroundColor = '#E9F6F8'
+        ChangeTheme('#2D5068', 'white')
+        
+    }else{
+        console.log('naoo')
+        header.style.backgroundImage = "url('src/img/round/morning-header.png')"
+        headerh1.style.color = '#424242'
+        document.querySelector('.main-content').style.backgroundColor = 'white'
+        ChangeTheme('#D1F6FF')
+    }
+}
+
+function ChangeTheme(color){
+
+    document.querySelectorAll('.main-content .notes-grid ul li').forEach((each)=>{
+        console.log('oifellas');
+        each.style.borderBottomColor = color
+    })
+}
+
+clearBtn.onclick = function(){  
+    confirms.classList.toggle('hide')      
+}
+confirmYes.onclick = function(){
     localStorage.clear()
-    const cards = document.querySelectorAll('.card')
-    cards.forEach((each)=>{
+    const cardss = document.querySelectorAll('.card')
+    cardss.forEach((each)=>{
         each.remove()
         notes.pop()
-    })    
+    })
+    confirms.classList.toggle('hide') 
+}
+confirmNo.onclick = function(){
+    confirms.classList.toggle('hide') 
 }
 
 mainArea.addEventListener('animationend', (anim)=>{
@@ -123,14 +168,9 @@ function DelTag(){
                     let index = notes.indexOf(valueToDel)
                     let indexLocal = localNotes.indexOf(valueToDel)
 
-
-                   
-        
-
                     localNotes.splice(indexLocal, 1)
                     notes.splice(index, 1)
                     localStorage.setItem('newNote', JSON.stringify(notes))
-             
                 }
             })
         }
@@ -149,6 +189,5 @@ function Check(){
     }
     
 }
-
 
 
